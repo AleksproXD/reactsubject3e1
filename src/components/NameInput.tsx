@@ -5,16 +5,16 @@ import Animated, {
   withTiming,
   withSpring,
 } from 'react-native-reanimated';
-import { emailSchema } from '../schemas/authSchema';
+import { nameSchema } from '../schemas/authSchema';
 import { AUTH_MESSAGES, AUTH_COLORS } from '../constants/authMessages';
 
-interface AuthEmailInputProps {
+interface NameInputProps {
   value: string;
   onChangeText: (text: string) => void;
   onValidationChange?: (isValid: boolean) => void;
 }
 
-export const AuthEmailInput: React.FC<AuthEmailInputProps> = ({
+export const NameInput: React.FC<NameInputProps> = ({
   value,
   onChangeText,
   onValidationChange,
@@ -23,7 +23,7 @@ export const AuthEmailInput: React.FC<AuthEmailInputProps> = ({
   const [isValid, setIsValid] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
 
-  const validateEmail = (text: string) => {
+  const validateName = (text: string) => {
     onChangeText(text);
 
     if (text.length === 0) {
@@ -34,7 +34,7 @@ export const AuthEmailInput: React.FC<AuthEmailInputProps> = ({
     }
 
     try {
-      emailSchema.parse(text);
+      nameSchema.parse(text);
       setError(null);
       setIsValid(true);
       onValidationChange?.(true);
@@ -81,20 +81,18 @@ export const AuthEmailInput: React.FC<AuthEmailInputProps> = ({
   return (
     <View className="w-full mb-4">
       <Text className="text-gray-700 text-sm font-semibold mb-2">
-        {AUTH_MESSAGES.labels.email}
+        {AUTH_MESSAGES.labels.name}
       </Text>
 
       <Animated.View style={borderStyle} className="bg-white rounded-xl">
         <TextInput
           value={value}
-          onChangeText={validateEmail}
+          onChangeText={validateName}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
-          placeholder={AUTH_MESSAGES.placeholders.email}
-          keyboardType="email-address"
-          autoCapitalize="none"
-          autoComplete="email"
-          autoCorrect={false}
+          placeholder={AUTH_MESSAGES.placeholders.name}
+          autoCapitalize="words"
+          autoComplete="name"
           className="px-4 py-3 text-base text-gray-800"
         />
       </Animated.View>
@@ -105,7 +103,7 @@ export const AuthEmailInput: React.FC<AuthEmailInputProps> = ({
         )}
         {isValid && !error && (
           <Text className="text-green-500 text-xs font-medium">
-            {AUTH_MESSAGES.emailValidation.valid}
+            {AUTH_MESSAGES.nameValidation.valid}
           </Text>
         )}
       </Animated.View>

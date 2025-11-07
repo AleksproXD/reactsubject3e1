@@ -1,7 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  // NOTE: Update this to include the paths to all files that contain Nativewind classes.
-  content: ["./App/**/*.{js,jsx,ts,tsx}", "./components/**/*.{js,jsx,ts,tsx}"],
+  // Rutas actualizadas para incluir app/ y src/
+  content: [
+    "./app/**/*.{js,jsx,ts,tsx}",           // ← Carpeta app (routing)
+    "./src/**/*.{js,jsx,ts,tsx}",           // ← Carpeta src (componentes, screens, etc)
+    "./components/**/*.{js,jsx,ts,tsx}",    // ← Por si tienes components en raíz
+    "./App.{js,jsx,ts,tsx}",                // ← Archivo App en raíz (si existe)
+  ],
   presets: [require("nativewind/preset")],
   theme: {
     extend: {},

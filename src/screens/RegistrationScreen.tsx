@@ -9,6 +9,7 @@ import {
   KeyboardAvoidingView,
   Platform,
 } from 'react-native';
+import { Ionicons, MaterialIcons, FontAwesome5, AntDesign, Feather } from '@expo/vector-icons';
 import { NameInput } from '../components/NameInput';
 import { AuthEmailInput } from '../components/AuthEmailInput';
 import { PasswordInput } from '../components/PasswordInput';
@@ -54,7 +55,16 @@ export const RegistrationScreen: React.FC = () => {
   };
 
   return (
-    <SafeAreaView className="flex-1 bg-gradient-to-b from-blue-50 to-white">
+    <SafeAreaView className="flex-1 bg-gray-50">
+      {/* 🎨 CAMBIAR COLOR DE FONDO:
+          - bg-gray-50 (gris claro actual)
+          - bg-blue-50 (azul claro)
+          - bg-purple-50 (morado claro)
+          - bg-pink-50 (rosa claro)
+          - bg-green-50 (verde claro)
+          - bg-orange-50 (naranja claro)
+          - bg-white (blanco puro)
+      */}
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         className="flex-1"
@@ -66,8 +76,45 @@ export const RegistrationScreen: React.FC = () => {
         >
           {/* Header */}
           <View className="items-center mb-8 px-6">
+            {/* 🖼️ CAMBIAR ICONO Y COLOR DEL CÍRCULO */}
             <View className="bg-blue-500 w-24 h-24 rounded-full items-center justify-center mb-4 shadow-lg">
-              <Text className="text-white text-5xl">🔐</Text>
+              {/* 
+                🎨 OPCIONES DE ICONOS DE EXPO:
+                
+                📱 Ionicons (estilo iOS):
+                <Ionicons name="person-circle" size={60} color="white" />
+                <Ionicons name="lock-closed" size={60} color="white" />
+                <Ionicons name="mail" size={60} color="white" />
+                <Ionicons name="shield-checkmark" size={60} color="white" />
+                <Ionicons name="key" size={60} color="white" />
+                <Ionicons name="create" size={60} color="white" />
+                <Ionicons name="checkmark-circle" size={60} color="white" />
+                <Ionicons name="rocket" size={60} color="white" />
+                
+                🎯 MaterialIcons (Material Design):
+                <MaterialIcons name="account-circle" size={60} color="white" />
+                <MaterialIcons name="lock" size={60} color="white" />
+                <MaterialIcons name="email" size={60} color="white" />
+                <MaterialIcons name="verified-user" size={60} color="white" />
+                <MaterialIcons name="person-add" size={60} color="white" />
+                
+                ✨ FontAwesome5:
+                <FontAwesome5 name="user-circle" size={60} color="white" />
+                <FontAwesome5 name="user-shield" size={60} color="white" />
+                <FontAwesome5 name="user-lock" size={60} color="white" />
+                <FontAwesome5 name="envelope" size={60} color="white" />
+                
+                🎨 AntDesign:
+                <AntDesign name="Safety" size={60} color="white" />
+                <AntDesign name="adduser" size={60} color="white" />
+                <AntDesign name="user" size={60} color="white" />
+                
+                🖊️ Feather (líneas finas):
+                <Feather name="user-plus" size={60} color="white" />
+                <Feather name="lock" size={60} color="white" />
+                <Feather name="shield" size={60} color="white" />
+              */}
+              <Ionicons name="person-add" size={60} color="white" />
             </View>
 
             <Text className="text-3xl font-bold text-gray-800 mb-2">
@@ -142,26 +189,7 @@ export const RegistrationScreen: React.FC = () => {
                 </Text>
               </View>
             )}
-          </View>
-
-          {/* Info adicional */}
-          <View className="mt-8 mx-6 bg-blue-50 rounded-xl p-4">
-            <Text className="text-blue-900 font-semibold mb-2">
-              🔒 Seguridad de tu cuenta:
-            </Text>
-            <Text className="text-blue-800 text-xs mb-1">
-              • Validación en tiempo real estilo Gmail
-            </Text>
-            <Text className="text-blue-800 text-xs mb-1">
-              • Indicador de fuerza de contraseña
-            </Text>
-            <Text className="text-blue-800 text-xs mb-1">
-              • Requisitos de seguridad visibles
-            </Text>
-            <Text className="text-blue-800 text-xs">
-              • Animaciones fluidas con Reanimated
-            </Text>
-          </View>
+           </View>
         </ScrollView>
       </KeyboardAvoidingView>
     </SafeAreaView>
